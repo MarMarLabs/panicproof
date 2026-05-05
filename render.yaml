@@ -3,6 +3,7 @@ services:
     name: panicproof
     runtime: node
     plan: free
+    repo: https://github.com/marmar9615-cloud/panicproof
     branch: main
     buildCommand: npm ci && npm run render:build
     startCommand: npm run start:render

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520" role="img" aria-label="Return policy screenshot placeholder">
+  <rect width="800" height="520" rx="36" fill="#f3f8fb"/>
+  <rect x="72" y="58" width="656" height="404" rx="22" fill="#ffffff" stroke="#d4e1e7" stroke-width="3"/>
+  <text x="112" y="122" font-family="Arial, sans-serif" font-size="30" font-weight="700" fill="#17313f">Northstar Goods Returns</text>
+  <rect x="112" y="166" width="576" height="1" fill="#d4e1e7"/>
+  <text x="112" y="224" font-family="Arial, sans-serif" font-size="25" fill="#17313f">Returns accepted within 30 days if unused.</text>
+  <text x="112" y="282" font-family="Arial, sans-serif" font-size="25" fill="#17313f">Refunds are issued to the original</text>
+  <text x="112" y="320" font-family="Arial, sans-serif" font-size="25" fill="#17313f">payment method within 5 to 7 business</text>
+  <text x="112" y="358" font-family="Arial, sans-serif" font-size="25" fill="#17313f">days after return package delivery.</text>
+  <text x="112" y="420" font-family="Arial, sans-serif" font-size="18" fill="#60737a">Captured April 12, 2026</text>
+</svg>

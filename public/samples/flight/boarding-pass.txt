@@ -1,0 +1,4 @@
+Boarding pass: Maya Chen, Record locator H7Q2M9, April 26 2026.
+Flight OA 1842 Austin AUS to Denver DEN seat 18C.
+Connection OA 742 Denver DEN to Chicago ORD scheduled 7:35 PM.
+Boarding group 4. Gate B22 changed to C14 at 6:58 PM.

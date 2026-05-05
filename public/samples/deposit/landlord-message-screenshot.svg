@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520" role="img" aria-label="Landlord message screenshot placeholder">
+  <rect width="800" height="520" rx="36" fill="#eef7f4"/>
+  <rect x="62" y="52" width="676" height="416" rx="28" fill="#ffffff" stroke="#cfe3dd" stroke-width="3"/>
+  <text x="100" y="112" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#18363a">Westline Properties</text>
+  <text x="100" y="152" font-family="Arial, sans-serif" font-size="18" fill="#60737a">May 3, 2026</text>
+  <rect x="100" y="190" width="530" height="146" rx="24" fill="#dff1ec"/>
+  <text x="128" y="236" font-family="Arial, sans-serif" font-size="24" fill="#18363a">We plan to retain $650 from</text>
+  <text x="128" y="274" font-family="Arial, sans-serif" font-size="24" fill="#18363a">the deposit for repainting</text>
+  <text x="128" y="312" font-family="Arial, sans-serif" font-size="24" fill="#18363a">and cleaning.</text>
+  <rect x="100" y="360" width="430" height="54" rx="20" fill="#f5f8f7"/>
+  <text x="128" y="394" font-family="Arial, sans-serif" font-size="20" fill="#60737a">Statement mailed later this month.</text>
+</svg>

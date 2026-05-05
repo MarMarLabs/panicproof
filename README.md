@@ -1,36 +1,77 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PanicProof
 
-## Getting Started
+PanicProof is a production-looking demo app that turns messy consumer-problem artifacts into a calm action board with extracted facts, a timeline, prioritized actions, editable drafts, and a polished PDF evidence summary.
 
-First, run the development server:
+It is not a legal-advice app. Generated facts, actions, and drafts are organization and drafting aids and must be reviewed by a human before use.
+
+![PanicProof landing page](/public/screenshots/panicproof-home.png)
+
+![PanicProof case workbench](/public/screenshots/panicproof-workbench.png)
+
+## What Works
+
+- No-auth Next.js App Router app with TypeScript, Tailwind CSS, and shadcn/ui.
+- SQLite local development with Prisma and a Neon/Postgres-ready schema for deployment.
+- Seeded sample cases for flight cancellation, security deposit, and chargeback/refund disputes.
+- One-click sample loading from the home page and `/samples`.
+- Upload flow with local text/PDF extraction and image/screenshot review placeholders.
+- Editable extracted facts before action generation.
+- Prioritized actions, editable action text, complete/done state, regenerated drafts, and PDF export.
+- OpenRouter integration behind a server utility, with deterministic demo mode when no key is set.
+- Render Blueprint in `render.yaml`.
+
+## Local Setup
 
 ```bash
+npm install
+npm run prisma:migrate
+npm run seed
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+`npm run prisma:migrate` wraps `RUST_LOG=info npx prisma migrate dev`, which avoids a blank SQLite schema-engine error seen on some macOS/Node runtimes while still running the normal Prisma migration flow.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Environment Variables
 
-## Learn More
+```bash
+# Optional model-backed analysis through OpenRouter
+OPENROUTER_API_KEY=""
+OPENROUTER_MODEL="openai/gpt-4.1-mini"
+OPENROUTER_SITE_URL="http://localhost:3000"
 
-To learn more about Next.js, take a look at the following resources:
+# Deployment database
+DATABASE_URL="postgresql://USER:PASSWORD@HOST/neondb?sslmode=verify-full"
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Local demo mode uses SQLite at `prisma/dev.db` with no required API key. For Render + Neon, set `DATABASE_URL` to the pooled Neon Postgres connection string and use the Render build command in `render.yaml`. The deployed build uses `prisma/schema.postgres.prisma`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Tests
 
-## Deploy on Vercel
+```bash
+npm run lint
+npm run test
+npm run build
+npm run test:e2e
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Render Deployment
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Push this repo to GitHub.
+2. Create or choose a Neon project and copy its pooled Postgres `DATABASE_URL`.
+3. In Render, create a Blueprint from the GitHub repo.
+4. Fill the synced env vars:
+   - `DATABASE_URL`
+   - `OPENROUTER_API_KEY` if using model-backed analysis
+   - `OPENROUTER_SITE_URL` with the deployed app URL
+5. Render runs `npm ci && npm run render:build`, which generates Prisma, pushes the Postgres schema, seeds samples, and builds Next.js.
+
+## 30-Second Demo Script
+
+1. Start on the landing page and say: “PanicProof turns consumer-problem evidence into a calm action board.”
+2. Click “Load sample case” for the flight cancellation scenario.
+3. Show the three-column workbench: evidence on the left, editable facts and actions in the center, timeline/drafts/export on the right.
+4. Edit one fact, click “Save facts,” then click “Generate action plan.”
+5. Mark an action complete, copy a draft, and click “Export polished PDF.”
+6. Close with: “Everything is reviewable and editable; this is organization and drafting support, not legal advice.”

@@ -38,7 +38,7 @@ Open `http://localhost:3000`.
 ```bash
 # Optional model-backed analysis through OpenRouter
 OPENROUTER_API_KEY=""
-OPENROUTER_MODEL="openai/gpt-4.1-mini"
+OPENROUTER_MODEL="openai/gpt-5.5"
 OPENROUTER_SITE_URL="http://localhost:3000"
 
 # Deployment database

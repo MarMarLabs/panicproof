@@ -16,7 +16,7 @@ services:
       - key: OPENROUTER_API_KEY
         sync: false
       - key: OPENROUTER_MODEL
-        value: openai/gpt-4.1-mini
+        value: openai/gpt-5.5
       - key: OPENROUTER_SITE_URL
         sync: false
       - key: NEXT_TELEMETRY_DISABLED

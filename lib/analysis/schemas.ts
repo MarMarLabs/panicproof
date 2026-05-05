@@ -44,4 +44,14 @@ export const caseAnalysisSchema = z.object({
   drafts: z.array(draftSchema),
 });
 
+export const actionPlanSchema = z.object({
+  actions: z.array(actionItemSchema).min(3).max(7),
+});
+
+export const draftListSchema = z.object({
+  drafts: z.array(draftSchema).length(2),
+});
+
 export type CaseAnalysis = z.infer<typeof caseAnalysisSchema>;
+export type ActionPlan = z.infer<typeof actionPlanSchema>;
+export type DraftList = z.infer<typeof draftListSchema>;

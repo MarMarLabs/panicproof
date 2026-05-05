@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 import { getCase } from "@/lib/case-service";
+import { generateDraftsWithOpenRouter } from "@/lib/analysis/openrouter";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -43,7 +44,13 @@ export async function POST(_request: Request, context: RouteContext) {
     return NextResponse.json({ error: "Case not found." }, { status: 404 });
   }
 
-  const drafts = buildDrafts(caseRecord);
+  const openRouterDrafts = await generateDraftsWithOpenRouter(caseRecord).catch(
+    (error) => {
+      console.warn("OpenRouter drafts failed; using demo draft generator.", error);
+      return null;
+    }
+  );
+  const drafts = openRouterDrafts?.drafts ?? buildDrafts(caseRecord);
   await prisma.$transaction([
     prisma.draft.deleteMany({ where: { caseId: id } }),
     ...drafts.map((draft) =>
